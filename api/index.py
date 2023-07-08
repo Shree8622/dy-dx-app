@@ -1,5 +1,5 @@
 from flask import Flask,render_template,request,send_file
-from logic import api_dy
+from api.logic import api_dy
 app = Flask(__name__,static_folder='static')
 import os
 @app.route('/')
