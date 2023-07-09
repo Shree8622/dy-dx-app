@@ -4,6 +4,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.tailwindcss.com"></script>
+  <script type="text/javascript" language="javascript">
+    function checkfile(sender) {
+        var validExts = new Array(".xlsx", ".xls", ".csv");
+        var fileExt = sender.value;
+        fileExt = fileExt.substring(fileExt.lastIndexOf('.'));
+        if (validExts.indexOf(fileExt) < 0) {
+          alert("Invalid file selected, valid files are of " +
+                   validExts.toString() + " types.");
+          return false;
+        }
+        else return true;
+    }
+    </script>
 </head>
 <body>
     <div class="relative isolate px-6 pt-14 lg:px-8">
@@ -21,11 +34,11 @@
                 <div class="mt-4 flex text-sm leading-6 text-gray-600">
                   <label for="file-upload" class="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500">
                     <span>Upload a file</span>
-                    <input id="file-upload" name="file" type="file" class="sr-only">
+                    <input id="file-upload" name="file" type="file" accept=".csv" class="sr-only" onchange="checkfile(this);">
                   </label>
                   <p class="pl-1">or drag and drop</p>
                 </div>
-                <p class="text-xs leading-5 text-gray-600">PNG, JPG, GIF up to 10MB</p>
+                <p class="text-xs leading-5 text-gray-600">CSV files only</p>
               </div>
             </div>
             <div class="mt-6 flex items-center justify-center gap-x-6">
